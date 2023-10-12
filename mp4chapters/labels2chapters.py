@@ -43,7 +43,7 @@ for line in lines:
         start_time = match.group(1)
         title = match.group(3)
         converted_start_time = convert_seconds_to_hhmmss(match.group(1))
-        converted_line = f"{converted_start_time}\n{title}\n"
+        converted_line = f"{converted_start_time} {title}\n"
         converted_lines.append(converted_line)
     else:
         converted_lines.append(line)
