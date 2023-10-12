@@ -26,14 +26,14 @@ if len(sys.argv) != 2:
     sys.exit(1)
 
 input_file_path = sys.argv[1]
-output_file_path = 'output.chapters.txt'
+output_file_path = "output.chapters.txt"
 
 # Read input file and process text
-with open(input_file_path, 'r') as input_file:
+with open(input_file_path, "r") as input_file:
     lines = input_file.readlines()
 
 # Define a regular expression pattern to match columns separated by tabs
-pattern = r'^(\S+)\s+(\S+)\s+(.*?)$'
+pattern = r"^(\S+)\s+(\S+)\s+(.*?)$"
 
 # Process each line and replace seconds with the converted HH:MM:SS.SSS format
 converted_lines = []
@@ -43,13 +43,13 @@ for line in lines:
         start_time = match.group(1)
         title = match.group(3)
         converted_start_time = convert_seconds_to_hhmmss(match.group(1))
-        converted_line = f"{converted_start_time}\t{title}\n"
+        converted_line = f"{converted_start_time}\n{title}\n"
         converted_lines.append(converted_line)
     else:
         converted_lines.append(line)
 
 # Write the converted lines to the output file
-with open(output_file_path, 'w') as output_file:
+with open(output_file_path, "w") as output_file:
     output_file.writelines(converted_lines)
 
 print(f"Conversion completed. Output saved to '{output_file_path}'.")
