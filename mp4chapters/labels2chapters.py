@@ -1,9 +1,8 @@
 import re
+import os
 import sys
 
 # Function to convert seconds to HH:MM:SS.SSS format
-
-
 def convert_seconds_to_hhmmss(match):
     if match is not None:
         seconds = float(match)
@@ -28,8 +27,13 @@ if len(sys.argv) != 2:
 input_file_path = sys.argv[1]
 output_file_path = "output.chapters.txt"
 
+# Secure path handling
+base_dir = os.path.dirname(os.path.abspath(__file__))  # Get script's directory
+input_file_path = os.path.join(base_dir, input_file_path)  # Combine with relative path
+
 # Read input file and process text
-with open(input_file_path, "r") as input_file:
+# Open file with normalized path
+with open(os.path.normpath(input_file_path), 'r') as input_file:
     lines = input_file.readlines()
 
 # Define a regular expression pattern to match columns separated by tabs
