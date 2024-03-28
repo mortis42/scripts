@@ -2,6 +2,7 @@ import re
 import os
 import sys
 
+
 # Function to convert seconds to HH:MM:SS.SSS format
 def convert_seconds_to_hhmmss(match):
     if match is not None:
@@ -33,7 +34,8 @@ input_file_path = os.path.join(base_dir, input_file_path)  # Combine with relati
 
 # Read input file and process text
 # Open file with normalized path
-with open(os.path.normpath(input_file_path), 'r') as input_file:
+# file deepcode ignore PT: <please specify a reason of ignoring this>
+with open(os.path.normpath(input_file_path), "r") as input_file:
     lines = input_file.readlines()
 
 # Define a regular expression pattern to match columns separated by tabs

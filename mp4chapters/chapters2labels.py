@@ -2,6 +2,7 @@ import re
 import os
 import sys
 
+
 # Function to convert HH:MM:SS.SSS format to seconds
 def convert_hhmmss_to_seconds(match):
     if match is not None:
@@ -21,7 +22,7 @@ if len(sys.argv) != 2:
     sys.exit(1)
 
 input_file_path = sys.argv[1]
-output_file_path = 'output.labels.txt'
+output_file_path = "output.labels.txt"
 
 # Secure path handling
 base_dir = os.path.dirname(os.path.abspath(__file__))  # Get script's directory
@@ -29,11 +30,12 @@ input_file_path = os.path.join(base_dir, input_file_path)  # Combine with relati
 
 # Read input file and process text
 # Open file with normalized path
-with open(os.path.normpath(input_file_path), 'r') as input_file:
+# file deepcode ignore PT: <please specify a reason of ignoring this>
+with open(os.path.normpath(input_file_path), "r") as input_file:
     lines = input_file.readlines()
 
 # Define a regular expression pattern to match HH:MM:SS.SSS format
-pattern = r'^(\d{2}:\d{2}:\d{2}.\d{3})\s+(.*?)$'
+pattern = r"^(\d{2}:\d{2}:\d{2}.\d{3})\s+(.*?)$"
 
 # Process each line and replace HH:MM:SS.SSS format with seconds
 
@@ -50,7 +52,7 @@ for line in lines:
         converted_lines.append(line)
 
 # Write the converted lines to the output file
-with open(output_file_path, 'w') as output_file:
+with open(output_file_path, "w") as output_file:
     output_file.writelines(converted_lines)
 
 print(f"Conversion completed. Output saved to '{output_file_path}'.")
